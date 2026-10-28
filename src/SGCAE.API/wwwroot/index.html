@@ -1,0 +1,13 @@
+<!doctype html><html lang="es"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SGCAE · API</title>
+<style>body{font:17px system-ui;background:#f1f5f9;color:#16283b;max-width:920px;margin:60px auto;padding:24px}section{background:white;border-radius:16px;padding:28px;margin:20px 0}code{background:#e9eff5;padding:3px}li{margin:12px 0}a{color:#1260aa}</style>
+<h1>SGCAE</h1><p>Sistema de Gestión y Control de Acceso de Empleados</p>
+<section><h2>Backend REST · .NET 10</h2><p>Esta página documenta la API; no es una interfaz de administración.</p>
+<p><a href="/health">Estado de la aplicación</a> · <a href="/health/database">Conexión SQL Server</a></p>
+<ul><li><code>/api/empleados</code> — POST registrar / GET consultar con pagina, tamano y activo.</li>
+<li><code>/api/empleados/{id}</code> — GET detalle / PUT actualizar.</li><li><code>/api/empleados/{id}/desactivar</code> — PATCH desactivar.</li>
+<li><code>/api/empleados/{id}/credenciales</code> — GET credenciales.</li>
+<li><code>/api/credenciales</code> — POST asignar. GET /{id}, PATCH /{id}/bloquear o /{id}/revocar.</li>
+<li><code>/api/puntos-acceso</code> — POST registrar / GET listar. PATCH /{id}/habilitacion.</li>
+<li><code>/api/movimientos</code> — POST registrar / GET historial con empleadoId, desde, hasta, puntoAccesoId, resultado, pagina y tamano.</li></ul>
+<p>Para ejemplos completos, consulte README.md, DEMOSTRACION.ps1 y SGCAE.http en la carpeta del proyecto.</p></section>
+<section><h2>Importante</h2><p>Versión académica local, sin autenticación. Use únicamente datos ficticios. No exponga esta API en Internet ni la utilice para controlar accesos físicos reales.</p></section></html>

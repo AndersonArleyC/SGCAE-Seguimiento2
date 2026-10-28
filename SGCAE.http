@@ -1,0 +1,61 @@
+@base = http://localhost:5300
+@empleado = REEMPLAZAR_GUID
+@credencial = REEMPLAZAR_GUID
+@punto = REEMPLAZAR_GUID
+
+### Estado SQL
+GET {{base}}/health/database
+
+### Registrar empleado ficticio
+POST {{base}}/api/empleados
+Content-Type: application/json
+
+{"identificacion":"DEMO-001","nombres":"Ana","apellidos":"Prueba","correo":"ana@example.com","cargo":"Auxiliar","area":"Logística"}
+
+### Listar empleados
+GET {{base}}/api/empleados?pagina=1&tamano=10
+
+### Consultar empleado
+GET {{base}}/api/empleados/{{empleado}}
+
+### Actualizar
+PUT {{base}}/api/empleados/{{empleado}}
+Content-Type: application/json
+
+{"nombres":"Ana","apellidos":"Prueba","correo":"ana@example.com","cargo":"Supervisora","area":"Logística"}
+
+### Punto
+POST {{base}}/api/puntos-acceso
+Content-Type: application/json
+
+{"nombre":"Recepción","habilitado":true}
+
+### Asignar credencial
+POST {{base}}/api/credenciales
+Content-Type: application/json
+
+{"empleadoId":"{{empleado}}","codigo":"DEMO-TARJETA-001"}
+
+### Consultar credencial
+GET {{base}}/api/credenciales/{{credencial}}
+
+### Entrada
+POST {{base}}/api/movimientos
+Content-Type: application/json
+
+{"codigoCredencial":"DEMO-TARJETA-001","puntoAccesoId":"{{punto}}","tipo":"Entrada"}
+
+### Bloquear
+PATCH {{base}}/api/credenciales/{{credencial}}/bloquear
+
+### Revocar
+PATCH {{base}}/api/credenciales/{{credencial}}/revocar
+
+### Desactivar empleado
+PATCH {{base}}/api/empleados/{{empleado}}/desactivar
+
+### Historial rechazado paginado
+GET {{base}}/api/movimientos?resultado=Rechazado&pagina=1&tamano=10
+
+### Filtros combinados (fechas ISO 8601 UTC; extremos inclusivos)
+GET {{base}}/api/movimientos?empleadoId={{empleado}}&puntoAccesoId={{punto}}&desde=2026-01-01T00:00:00Z&hasta=2026-12-31T23:59:59Z&pagina=1&tamano=10
