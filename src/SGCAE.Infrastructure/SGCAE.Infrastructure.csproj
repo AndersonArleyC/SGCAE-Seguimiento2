@@ -1,1 +1,1 @@
-<Project Sdk="Microsoft.NET.Sdk"><ItemGroup><ProjectReference Include="../SGCAE.Application/SGCAE.Application.csproj"/><PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="10.0.0"/></ItemGroup></Project>
+<Project Sdk="Microsoft.NET.Sdk"><ItemGroup><PackageReference Include="System.Security.Cryptography.Pkcs" Version="9.0.21" /><ProjectReference Include="../SGCAE.Application/SGCAE.Application.csproj" /><PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="10.0.0" /></ItemGroup></Project>
